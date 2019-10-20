@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Main {
     static final Scanner scan = new Scanner(System.in);
-    static ArrayList <Person> records = new ArrayList<>();
+    static ArrayList<Record> records = new ArrayList<>();
 
 
     public static void main(String[] args) {
@@ -23,10 +23,9 @@ public class Main {
                     createRecord();
                     break;
 
-
                 case "list":
-                        listRecords();
-                        break;
+                    listRecords();
+                    break;
 
                 default:
                     System.out.println("Error: Unknown command");
@@ -38,7 +37,7 @@ public class Main {
 
     private static void listRecords() {
 
-        for (Record p  : records) {
+        for (Record p : records){
             System.out.println(p);
 
         }
@@ -46,26 +45,42 @@ public class Main {
 
     private static void createRecord() {
 
-        System.out.print ("type> ");
+        System.out.print("type> ");
         String type = scan.next();
         switch (type) {
             case "person":
                 createPerson();
                 break;
+            case "note":
+                createNote();
+                break;
             default:
                 System.out.println("Error: Unknown record type");
+
+
         }
     }
 
+
     private static void createPerson() {
+
 
         Person p = new Person();
         p.askInfo();
-        records.add (p);
+        records.add(p);
 
     }
 
-    private static void showHelp() {
-System.out.println("One day here will be a great manual.Eventually.");
+    private static void createNote() {
+
+        Note p = new Note();
+        p.askInfo();
+        records.add(p);
+
     }
-}
+
+        private static void showHelp () {
+            System.out.println("One day here will be a great manual.Eventually.");
+        }
+    }
+
