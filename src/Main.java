@@ -7,7 +7,7 @@ public class Main {
 
 
     public static void main(String[] args) {
-
+        scan.useDelimiter("\n");
         System.out.println("Enter a command. Type 'help' for help");
         for (; ; ) {
             System.out.print("> ");
@@ -49,10 +49,13 @@ public class Main {
         String type = scan.next();
         switch (type) {
             case "person":
-                createPerson();
+                createRecord(new Person());
                 break;
             case "note":
-                createNote();
+                createRecord(new Note());
+                break;
+            case "alarm":
+                createRecord(new Alarm());
                 break;
             default:
                 System.out.println("Error: Unknown record type");
@@ -62,21 +65,9 @@ public class Main {
     }
 
 
-    private static void createPerson() {
-
-
-        Person p = new Person();
-        p.askInfo();
-        records.add(p);
-
-    }
-
-    private static void createNote() {
-
-        Note p = new Note();
-        p.askInfo();
-        records.add(p);
-
+    private static void createRecord(Record r){
+        r.askInfo();
+        records.add(r);
     }
 
         private static void showHelp () {
