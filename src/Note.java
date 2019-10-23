@@ -7,7 +7,7 @@ public class Note extends Record {
 
     @Override
     public void askInfo() {
-        System.out.println("text> ");
+        System.out.println("enter text> ");
         text = Main.scan.next();
     }
 

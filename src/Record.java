@@ -9,9 +9,12 @@ public abstract class Record {
     }
 
     public abstract void askInfo();
-    public abstract boolean contains (String str);{
+
+
+    public  boolean contains (String str) {
+
         String strID = Integer.toString(id);
-        return.strID
+        return strID.contains(str);
     }
     public int getId() { return id; }
 

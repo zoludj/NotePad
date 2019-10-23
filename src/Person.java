@@ -24,13 +24,11 @@ public class Person extends Record{
     @Override
     public boolean contains(String str) {
 
-        return (name.contains(str)
+        return super.contains(str)
+                || name.contains(str)
                 || surname.contains(str)
                 || phone.contains(str)
-                || email.contains(str)) {
-            return true;
-        }
-        return false;
+                || email.contains(str);
     }
 
 

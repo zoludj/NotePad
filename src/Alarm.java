@@ -24,7 +24,7 @@ public class Alarm extends Note {
 
     public boolean contains(String str) {
         return super.contains(str)
-                ||time.contains(str));
+                ||time.contains(str);
             }
     public String getTime() {
         return time;
