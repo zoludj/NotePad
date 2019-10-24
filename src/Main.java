@@ -6,7 +6,9 @@ public class Main {
     static ArrayList<Record> records = new ArrayList<>();
 
 
+
     public static void main(String[] args) {
+
         scan.useDelimiter("\n");
         System.out.println("Enter a command. Type 'help' for help");
         for (; ; ) {
@@ -27,10 +29,45 @@ public class Main {
                     listRecords();
                     break;
 
+                case "find":
+                    findRecord();
+                    break;
+                case "delete":
+                    deleteRecord();
+                    break;
+
                 default:
                     System.out.println("Error: Unknown command");
 
 
+            }
+        }
+    }
+
+
+
+    private static void deleteRecord() {
+        System.out.print("id> ");
+        int id = scan.nextInt();
+        int size = records.size();
+        for (int i = 0; i < records.size(); i++) {
+            Record r = records.get(i);
+
+            if (r.getId()== id) {
+                records.remove(i);
+                break;
+            }
+
+        }
+
+    }
+
+    private static void findRecord() {
+        System.out.print("substring> ");
+        String str = scan.next();
+        for (Record r : records){
+            if(r.contains(str)){
+                System.out.print(r);
             }
         }
     }
@@ -56,6 +93,9 @@ public class Main {
                 break;
             case "alarm":
                 createRecord(new Alarm());
+                break;
+            case "date":
+                createRecord(new Reminder());
                 break;
             default:
                 System.out.println("Error: Unknown record type");

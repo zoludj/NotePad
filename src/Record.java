@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public abstract class Record {
 
     private static int counter = 0;
@@ -11,14 +13,16 @@ public abstract class Record {
     public abstract void askInfo();
 
 
-    public  boolean contains (String str) {
+    public boolean contains(String str) {
 
         String strID = Integer.toString(id);
         return strID.contains(str);
     }
-    public int getId() { return id; }
+
+    public int getId() {
+        return id;
+    }
 
 
 }
-
 
