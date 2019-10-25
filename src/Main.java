@@ -74,7 +74,7 @@ public class Main {
 
     private static void listRecords() {
 
-        for (Record p : records){
+        for (Record p : records) {
             System.out.println(p);
 
         }
@@ -104,14 +104,13 @@ public class Main {
         }
     }
 
-
-    private static void createRecord(Record r){
+    private static void createRecord(Record r) {
         r.askInfo();
         records.add(r);
     }
 
-        private static void showHelp () {
-            System.out.println("One day here will be a great manual.Eventually.");
-        }
+    private static void showHelp() {
+        System.out.println("One day here will be a great manual.Eventually.");
     }
+}
 

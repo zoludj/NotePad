@@ -29,9 +29,7 @@ public class Note extends Record {
 
     @Override
     public boolean contains(String str) {
-        if (text.contains(str)) {
-            return true;
-        }
-        return false;
+        return super.contains(str)
+                || text.contains(str);
     }
 }

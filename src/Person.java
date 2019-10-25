@@ -1,4 +1,4 @@
-public class Person extends Record{
+public class Person extends Record {
 
 
     private String name;
@@ -8,14 +8,14 @@ public class Person extends Record{
 
 
     @Override
-    public void askInfo()  {
+    public void askInfo() {
 
         System.out.println("Name> ");
         name = Main.scan.next();
         System.out.println("Surname> ");
         surname = Main.scan.next();
         System.out.println("Phone> ");
-        phone  = Main.scan.next();
+        phone = Main.scan.next();
         System.out.print("Email> ");
         email = Main.scan.next();
 
@@ -32,23 +32,37 @@ public class Person extends Record{
     }
 
 
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public String getName() { return name; }
+    public String getSurname() {
+        return surname;
+    }
 
-    public void setName(String name) { this.name = name; }
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
 
-    public String getSurname() { return surname; }
+    public String getPhone() {
+        return phone;
+    }
 
-    public void setSurname(String surname) { this.surname = surname; }
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
-    public String getPhone() { return phone; }
+    public String getEmail() {
+        return email;
+    }
 
-    public void setPhone(String phone) { this.phone = phone; }
-
-    public String getEmail() { return email; }
-
-    public void setEmail(String email) { this.email = email; }
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     @Override
     public String toString() {
