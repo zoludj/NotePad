@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -16,11 +18,12 @@ public class Main {
             String cmd = scan.next();
             switch (cmd) {
                 case "exit":
-                    System.out.println("Good bye");
+                    System.out.println("Goodbye");
                     return;
                 case "help":
                     showHelp();
                     break;
+
                 case "create":
                     createRecord();
                     break;
@@ -32,8 +35,13 @@ public class Main {
                 case "find":
                     findRecord();
                     break;
+
                 case "delete":
                     deleteRecord();
+                    break;
+
+                case "clean":
+                    cleanRecord();
                     break;
 
                 default:
@@ -44,6 +52,19 @@ public class Main {
         }
     }
 
+    private static void cleanRecord() {
+        System.out.print("word> ");
+        String str = scan.next();
+        for (Record r : records) {
+            if (r.contains(str)) {
+                records.remove(r);
+                break;
+            }
+        }
+    }
+
+
+
 
 
     private static void deleteRecord() {
@@ -53,20 +74,18 @@ public class Main {
         for (int i = 0; i < records.size(); i++) {
             Record r = records.get(i);
 
-            if (r.getId()== id) {
+            if (r.getId() == id) {
                 records.remove(i);
                 break;
             }
-
         }
-
     }
 
     private static void findRecord() {
         System.out.print("substring> ");
         String str = scan.next();
-        for (Record r : records){
-            if(r.contains(str)){
+        for (Record r : records) {
+            if (r.contains(str)) {
                 System.out.print(r);
             }
         }
@@ -94,7 +113,7 @@ public class Main {
             case "alarm":
                 createRecord(new Alarm());
                 break;
-            case "date":
+            case "reminder":
                 createRecord(new Reminder());
                 break;
             default:

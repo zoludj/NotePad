@@ -1,9 +1,12 @@
 import java.util.ArrayList;
+import java.util.Iterator;
+
 
 public abstract class Record {
 
     private static int counter = 0;
     private int id;
+
 
     public Record() {
         counter++;
@@ -17,12 +20,12 @@ public abstract class Record {
 
         String strID = Integer.toString(id);
         return strID.contains(str);
+
     }
 
     public int getId() {
         return id;
     }
-
 
 }
 

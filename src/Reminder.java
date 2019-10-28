@@ -6,7 +6,6 @@ import java.time.format.DateTimeFormatter;
 public class Reminder extends Alarm {
 
 
-
     public static final DateTimeFormatter DATE_FORMAT
             = DateTimeFormatter.ofPattern("uuuu; MM/dd");
 
@@ -27,14 +26,18 @@ public class Reminder extends Alarm {
         date = LocalDate.parse(strDate, DATE_FORMAT);
     }
 
-        public boolean contains(String str) {
-            return super.contains(str)
-                    ||date.format(DATE_FORMAT).contains(str);
+    public boolean contains(String str) {
+        return super.contains(str)
+                || date.format(DATE_FORMAT).contains(str);
 
     }
 
-    public LocalDate getDate() { return date; }
+    public LocalDate getDate() {
+        return date;
+    }
 
-    public void setDate(LocalDate date) { this.date = date; }
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
 
 }

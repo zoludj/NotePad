@@ -37,8 +37,7 @@ public static final DateTimeFormatter TIME_FORMAT
         return time;
     }
 
-    public void setTime(LocalTime time) {this.time = time;
-    }
+    public void setTime(LocalTime time) {this.time = time; }
 
 }
 
