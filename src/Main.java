@@ -34,12 +34,40 @@ public class Main {
                 case "delete":
                     deleteRecord();
                     break;
-
+                case "expired":
+                    listExpiredRecords();
+                    break;
+                case "dismiss":
+                    dismissExpirable();
+                    break;
 
                 default:
                     System.out.println("Error: Unknown command");
 
 
+            }
+        }
+    }
+
+    private static void dismissExpirable() {
+        int id = Asker.askInt("id");
+        for (Record r : records) {
+            if (r instanceof Expirable && r.getId()== id) {
+                Expirable e = (Expirable) r;
+                if (r.getId() == id)
+                    e.dismiss();
+
+            }
+        }
+    }
+
+    private static void listExpiredRecords() {
+        for (Record r : records) {
+            if (r instanceof Expirable) {
+                Expirable e = (Expirable) r;
+                if (e.isExpired()) {
+                    System.out.println(r);
+                }
             }
         }
     }
@@ -107,6 +135,7 @@ public class Main {
         r.askInfo();
         records.add(r);
     }
+
     private static void showHelp() {
         System.out.println("One day here will be a great manual.Eventually.");
     }

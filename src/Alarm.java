@@ -1,9 +1,11 @@
+import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class Alarm extends Note {
+public class Alarm extends Note implements Expirable {
 
 
     private LocalTime time;
+    private LocalDate dismissedAt;
 
     @Override
     public void askInfo() {
@@ -35,6 +37,19 @@ public class Alarm extends Note {
         this.time = time;
     }
 
+    @Override
+    public boolean isExpired() {
+        if (LocalDate.now().equals(dismissedAt)){
+            return false;
+        }
+        return LocalTime.now().isAfter(time);
+    }
+
+    @Override
+    public void dismiss() {
+        dismissedAt = LocalDate.now();
+
+    }
 }
 
 
