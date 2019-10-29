@@ -7,8 +7,8 @@ public class Note extends Record {
 
     @Override
     public void askInfo() {
-        System.out.println("enter text> ");
-        text = Main.scan.next();
+
+        text = Asker.askString("enter text");
     }
 
 

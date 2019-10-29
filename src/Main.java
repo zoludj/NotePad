@@ -2,18 +2,17 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    static final Scanner scan = new Scanner(System.in);
-    static ArrayList<Record> records = new ArrayList<>();
 
+    static ArrayList<Record> records = new ArrayList<>();
 
 
     public static void main(String[] args) {
 
-        scan.useDelimiter("\n");
+
         System.out.println("Enter a command. Type 'help' for help");
         for (; ; ) {
-            System.out.print("> ");
-            String cmd = scan.next();
+
+            String cmd = Asker.askString("cmd");
             switch (cmd) {
                 case "exit":
                     System.out.println("Good bye");
@@ -36,6 +35,7 @@ public class Main {
                     deleteRecord();
                     break;
 
+
                 default:
                     System.out.println("Error: Unknown command");
 
@@ -45,15 +45,14 @@ public class Main {
     }
 
 
-
     private static void deleteRecord() {
-        System.out.print("id> ");
-        int id = scan.nextInt();
+
+        int id = Asker.askInt("id");
         int size = records.size();
         for (int i = 0; i < records.size(); i++) {
             Record r = records.get(i);
 
-            if (r.getId()== id) {
+            if (r.getId() == id) {
                 records.remove(i);
                 break;
             }
@@ -63,10 +62,10 @@ public class Main {
     }
 
     private static void findRecord() {
-        System.out.print("substring> ");
-        String str = scan.next();
-        for (Record r : records){
-            if(r.contains(str)){
+
+        String str = Asker.askString("Substring");
+        for (Record r : records) {
+            if (r.contains(str)) {
                 System.out.print(r);
             }
         }
@@ -74,7 +73,7 @@ public class Main {
 
     private static void listRecords() {
 
-        for (Record p : records){
+        for (Record p : records) {
             System.out.println(p);
 
         }
@@ -82,8 +81,8 @@ public class Main {
 
     private static void createRecord() {
 
-        System.out.print("type> ");
-        String type = scan.next();
+
+        String type = Asker.askString("type");
         switch (type) {
             case "person":
                 createRecord(new Person());
@@ -94,7 +93,7 @@ public class Main {
             case "alarm":
                 createRecord(new Alarm());
                 break;
-            case "date":
+            case "reminder":
                 createRecord(new Reminder());
                 break;
             default:
@@ -104,14 +103,12 @@ public class Main {
         }
     }
 
-
-    private static void createRecord(Record r){
+    private static void createRecord(Record r) {
         r.askInfo();
         records.add(r);
     }
-
-        private static void showHelp () {
-            System.out.println("One day here will be a great manual.Eventually.");
-        }
+    private static void showHelp() {
+        System.out.println("One day here will be a great manual.Eventually.");
     }
+}
 
