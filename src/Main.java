@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class Main {
@@ -40,6 +41,9 @@ public class Main {
                 case "dismiss":
                     dismissExpirable();
                     break;
+                case "delete all":
+                    deleteAll();
+                    break;
 
                 default:
                     System.out.println("Error: Unknown command");
@@ -49,10 +53,21 @@ public class Main {
         }
     }
 
+    private static void deleteAll() {
+        String substr = Asker.askString("substring");
+        Iterator<Record> iterator = records.iterator();
+        while (iterator.hasNext()) {
+            Record r = iterator.next();
+            if (r.contains(substr)) {
+                iterator.remove();
+            }
+        }
+    }
+
     private static void dismissExpirable() {
         int id = Asker.askInt("id");
         for (Record r : records) {
-            if (r instanceof Expirable && r.getId()== id) {
+            if (r instanceof Expirable && r.getId() == id) {
                 Expirable e = (Expirable) r;
                 if (r.getId() == id)
                     e.dismiss();
