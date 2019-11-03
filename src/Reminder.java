@@ -3,11 +3,29 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-public class Reminder extends Alarm {
-
+public class Reminder extends Alarm implements Expirable {
+    private LocalDate date;
+    private boolean dismissed = false;
 
     public static final DateTimeFormatter DATE_FORMAT
             = DateTimeFormatter.ofPattern("uuuu; MM/dd");
+
+    @Override
+    public boolean isExpired() {
+        if (dismissed == true){
+            return false;
+        }
+        var dt = LocalDateTime.of(date, getTime());
+
+        return LocalDateTime.now().isAfter(dt);
+    }
+
+    @Override
+    public void dismiss() {
+        dismissed =true;
+
+
+    }
 
     @Override
     public String toString() {
@@ -16,14 +34,12 @@ public class Reminder extends Alarm {
                 '}';
     }
 
-    private LocalDate date;
 
     @Override
     public void askInfo() {
         super.askInfo();
-        System.out.print("date> ");
-        String strDate = Main.scan.next();
-        date = LocalDate.parse(strDate, DATE_FORMAT);
+        date = Asker.askDate("date");
+
     }
 
     public boolean contains(String str) {
