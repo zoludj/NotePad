@@ -13,9 +13,7 @@ public static final DateTimeFormatter TIME_FORMAT
     @Override
     public void askInfo() {
         super.askInfo();
-        System.out.println("time> ");
-        String strTime = Main.scan.next();
-        time = LocalTime.parse(strTime, TIME_FORMAT);
+        time = Asker.askTime("time");
     }
 
 
